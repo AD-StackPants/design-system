@@ -1,45 +1,129 @@
+/* Root Card & Container (Level 1: rounded-xl, crisp 1px border, shadow-xs) */
 .card {
-    border-radius: var(--radius, 0.5rem);
-    border: 1px solid var(--border);
-    background-color: var(--card);
-    color: var(--foreground);
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 5%), 0 1px 2px -1px rgb(0 0 0 / 5%);
-    display: flex;
-    flex-direction: column;
+  border-radius: var(--radius-xl, 0.75rem);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--foreground);
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .card-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
-    padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem;
 }
 
 .card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
-    color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
 }
 
 .card-description {
-    font-size: 0.875rem;
-    color: var(--neutral-foreground);
+  font-size: 0.75rem;
+  color: var(--neutral-foreground);
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 .card-content {
-    padding: 0 1.5rem 1.5rem;
-    flex-grow: 1;
+  padding: 0 1.25rem 1.25rem;
+  flex-grow: 1;
 }
 
 .card-header + .card-content {
-    padding-top: 0;
+  padding-top: 0;
 }
 
 .card-footer {
-    display: flex;
-    align-items: center;
-    padding: 1.5rem;
-    border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+  background-color: var(--card-nested);
+  font-size: 0.75rem;
 }
+
+/* Level 2: Cluster Well (Nested inset region) */
+.card-well,
+.cluster-well {
+  background-color: var(--card-nested);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl, 0.75rem);
+  padding: 1rem;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Level 3: Nested Tile / Sub-Card */
+.card-tile,
+.card-sub {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 0.5rem);
+  padding: 1rem;
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Level 4: Icon Box */
+.icon-box {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-lg, 0.5rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--primary-tint);
+  color: var(--primary);
+}
+
+.icon-box-emerald {
+  background-color: var(--success-tint);
+  color: var(--success);
+}
+
+.icon-box-amber {
+  background-color: var(--warning-tint);
+  color: var(--warning);
+}
+
+.icon-box-rose {
+  background-color: var(--danger-tint);
+  color: var(--danger);
+}
+
+/* Metric & Telemetry Tile Typography */
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.2;
+  font-feature-settings: "tnum" 1;
+}
+
+.stat-change {
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-change-positive {
+  color: var(--success);
+}
+
+.stat-change-negative {
+  color: var(--danger);
+}
+

@@ -59,47 +59,58 @@ This disables the built-in prefers-color-scheme media query and keeps the light-
 
 ## 🎨 Theme Variables & Customization
 
-The design system exposes core variables as CSS Custom Properties, making them easily customizable at runtime. Simply override them in your project's `:root` selector:
+The design system is engineered for modern B2B SaaS interfaces. It exposes slate neutrals, brand blue (`#1976D2`), micro-elevations (`shadow-xs`), and strict mathematical corner radii:
 
 ```css
 :root {
-  --primary: hsl(220 100% 50%);  /* Custom primary brand color */
-  --radius: 0.5rem;             /* Custom border radius */
+  --primary: #1976d2;           /* Primary brand action */
+  --primary-hover: #1565c0;     /* Hover state */
+  --primary-active: #0d47a1;    /* Active state */
+  --radius-xl: 0.75rem;         /* Page containers, cards, modals */
+  --radius-lg: 0.5rem;          /* Action buttons, form inputs */
+  --radius-md: 0.375rem;        /* Badges, table chips, segmented tabs */
 }
 
 .dark {
-  --primary: hsl(200 100% 60%);  /* Custom dark mode primary */
+  --background: #020617;        /* Deep slate-950 canvas (no pitch black) */
+  --card: #0f172a;              /* Slate-900 surface */
+  --border: #1e293b;            /* Crisp 1px border */
 }
 ```
-
 ![Design Tokens](./src/assets/design-tokens.png)
 
 ### Core Semantic Tokens Available:
-* `--background` / `--foreground`: Base canvas & text
-* `--card`: Cards & panel surfaces
-* `--primary` / `--primary-hover` / `--primary-foreground`: Brand actions
+* `--background` / `--foreground`: Base canvas (`slate-50` / `slate-950`) & text
+* `--card` / `--card-nested`: Surfaces & cluster wells (`slate-50/70` / `slate-800/40`)
+* `--primary` / `--primary-hover` / `--primary-active` / `--primary-foreground`: Brand actions (`#1976D2`)
+* `--primary-tint` / `--primary-border`: Subtle brand highlighting
 * `--secondary` / `--secondary-hover` / `--secondary-foreground`: Secondary actions
-* `--accent` / `--accent-hover` / `--accent-foreground`: Interactive item highlights
-* `--neutral` / `--neutral-hover` / `--neutral-foreground`: Borders, helper text, and striped table backgrounds
-* `--border`: Structural container borders
-* `--success` / `--warning` / `--info` / `--danger`: Semantic indicators
+* `--accent` / `--accent-hover` / `--accent-foreground`: Interactive highlights
+* `--neutral` / `--neutral-hover` / `--neutral-foreground`: Muted helpers and subtle backgrounds
+* `--border`: Structural container borders (`slate-200` / `slate-800`)
+* `--success` / `--warning` / `--info` / `--danger`: High-contrast semantic indicators (Emerald, Amber, Blue, Rose)
+* `--radius-xl` / `--radius-lg` / `--radius-md` / `--radius-full`: Geometry scale
+* `--shadow-xs` / `--shadow-lg` / `--shadow-xl`: Crisp micro-elevation hierarchy
 
 ---
 
-## ⚡ Component & Form reference
+## ⚡ Component & Layout Reference
 
-The package includes highly optimized, pre-styled custom classes:
+The package includes pre-styled, accessibility-compliant CSS components with zero AI artifacts (no purple orbs, no decorative emojis, no indiscriminate pill badges):
 
-- **`.button`**: Standardized, transition-ready buttons. Variants: `.button-primary`, `.button-secondary`, `.button-outline`, `.button-danger`, and `.button-link`.
-- **`.card`**: Modern panel container (`.card-header`, `.card-title`, `.card-description`, `.card-content`, `.card-footer`).
+- **`.button`**: Standardized, transition-ready buttons with `rounded-lg` and `shadow-xs`. Variants: `.button-primary`, `.button-secondary`, `.button-outline`, `.button-destructive`, `.button-ghost`, `.button-icon`, and `.button-link`. Sizes: `.button-sm`, `.button-lg`.
+- **`.segmented-switcher` & `.segmented-tab`**: Segmented view switchers.
+- **`.card`**: 5-level container rhythm (`.card`, `.card-well`, `.card-tile`, `.icon-box`, `.stat-value`, `.stat-change`).
+- **`.table-container` & `.table`**: Tabular ledgers with sticky headers, `.table-numeric` right-aligned monospace numbers, and `.table-footer` pagination.
 - **`.form-group`**: Form elements:
-  * `.form-input` / `.form-select` / `.form-textarea`: Form control fields
-  * `.form-file`: Styled file upload buttons
-  * `.form-range`: Styled sliders with hover scale effects
-  * `.form-checkbox` / `.form-radio`: Fully styled checkbox/radio components replacing native browser styles
-- **`.table`**: Zebra-striped data tables (`.table-striped`, `.table-hover` with contrast correction for striped rows).
-- **`.badge`**: Status labels (`.badge-success`, `.badge-warning`, `.badge-danger`).
-- **`.alert`**: Alert containers (`.alert-success`, `.alert-warning`, `.alert-danger`).
+  * `.form-input` / `.form-select` / `.form-textarea`: Form control fields with brand focus ring (`#1976D2`)
+  * `.form-search`: Search input with inline icon positioning
+  * `.form-error-banner`: Structured validation callout banner
+  * `.form-file` / `.form-range` / `.form-checkbox` / `.form-radio`: Fully styled input components
+- **`.badge`**: Rectangular status badges (`rounded-md uppercase tracking-wider`) with `.badge-dot` pulsing indicators and `.badge-mono` numeric chips. Never pill-shaped.
+- **`.alert`**: Semantic feedback containers with 1px tinted borders (`.alert-success`, `.alert-warning`, `.alert-danger`, `.alert-info`).
+- **`.dialog` & `.drawer`**: 5-region modal dialogs (`shadow-lg`, backdrop blur) and slide-over preview drawers (`shadow-xl`).
+- **`.sidebar` & `.navbar`**: Collapsible sidebars with subtle blue tint active highlighting (`.sidebar-item.active`) and `.telemetry-pulse` operational indicators.
 
 ---
 

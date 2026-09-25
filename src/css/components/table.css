@@ -1,31 +1,37 @@
+/* Table Ledger Enclosure (Level 1 Container: rounded-xl, shadow-xs, overflow-hidden) */
 .table-container {
   width: 100%;
   overflow-x: auto;
-  border-radius: var(--radius, 0.5rem);
+  border-radius: var(--radius-xl, 0.75rem);
   border: 1px solid var(--border);
   background-color: var(--card);
+  box-shadow: var(--shadow-xs);
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   text-align: left;
 }
 
 .table th {
-  background-color: transparent;
+  background-color: var(--neutral);
   color: var(--neutral-foreground);
   font-weight: 600;
+  font-size: 0.75rem;
   padding: 0.75rem 1rem;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
   user-select: none;
+  white-space: nowrap;
 }
 
 .table td {
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1rem;
   border-bottom: 1px solid var(--border);
   color: var(--foreground);
+  font-size: 0.75rem;
+  transition: background-color 0.15s ease;
 }
 
 .table-compact th,
@@ -37,11 +43,56 @@
   border-bottom: none;
 }
 
-.table-striped tbody tr:nth-child(odd) {
-  background-color: var(--neutral);
+.table-striped tbody tr:nth-child(even) {
+  background-color: var(--card-nested);
 }
 
 .table-hover tbody tr:hover {
-  background-color: var(--neutral-hover);
+  background-color: var(--secondary-hover);
   cursor: pointer;
 }
+
+/* Numeric & Monospace Integrities (data-tables.md) */
+.table-numeric,
+.table-cell-numeric,
+.table th.text-right,
+.table td.text-right {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+.table-id,
+.table-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+  font-weight: 600;
+}
+
+.table-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Empty Table State */
+.table-empty {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--neutral-foreground);
+  font-style: italic;
+  font-size: 0.75rem;
+}
+
+/* Tabular Ledger Pagination Footer */
+.table-footer {
+  padding: 0.875rem 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--neutral-foreground);
+  background-color: var(--card-nested);
+  gap: 1rem;
+}
+

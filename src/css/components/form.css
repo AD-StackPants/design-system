@@ -1,192 +1,285 @@
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
 }
 
 .form-label {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--foreground);
-    line-height: 1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.form-label-required {
+  color: var(--danger);
+  margin-left: 0.25rem;
 }
 
 .form-input,
 .form-select,
 .form-textarea {
-    width: 100%;
-    border-radius: var(--radius, 0.5rem);
-    border: 1px solid var(--border);
-    background-color: var(--background);
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    color: var(--foreground);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  width: 100%;
+  border-radius: var(--radius-lg, 0.5rem);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  color: var(--foreground);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  box-shadow: var(--shadow-xs);
+}
+
+.form-input,
+.form-select {
+  height: 2.25rem;
+}
+
+.form-input-lg,
+.form-select-lg {
+  height: 2.5rem;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
 }
 
 .form-textarea {
-    min-height: 5rem;
-    resize: vertical;
+  min-height: 5rem;
+  resize: vertical;
 }
 
+/* Precision Brand Focus Rings */
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--primary);
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
 }
 
 .form-input::placeholder,
 .form-select::placeholder,
 .form-textarea::placeholder {
-    color: var(--neutral-foreground);
-    opacity: 0.8;
+  color: var(--neutral-foreground);
+  opacity: 0.8;
 }
 
 .form-input:disabled,
 .form-select:disabled,
 .form-textarea:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-    background-color: var(--neutral);
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: var(--neutral);
+}
+
+/* Error States */
+.form-input-error,
+.form-input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.form-input-error:focus,
+.form-input[aria-invalid="true"]:focus {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 1px var(--danger);
+}
+
+/* Search Input with Inline Icon (forms-and-inputs.md) */
+.form-search {
+  position: relative;
+  width: 100%;
+}
+
+.form-search .form-input {
+  padding-left: 2.25rem;
+}
+
+.form-search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--neutral-foreground);
+  pointer-events: none;
+}
+
+/* Form Error Callout Banner (forms-and-inputs.md) */
+.form-error-banner {
+  padding: 0.875rem;
+  border-radius: var(--radius-lg, 0.5rem);
+  background-color: var(--danger-tint);
+  border-left: 4px solid var(--danger);
+  color: var(--danger);
+  font-size: 0.75rem;
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.form-error-banner-title {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.form-error-banner-list {
+  padding-left: 1.25rem;
+  margin: 0;
+  font-size: 0.6875rem;
+  line-height: 1.4;
 }
 
 /* File Input */
 .form-file {
-    width: 100%;
-    font-size: 0.875rem;
-    color: var(--neutral-foreground);
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--neutral-foreground);
 }
 
 .form-file::file-selector-button {
-    margin-right: 1rem;
-    border: 1px solid var(--border);
-    background-color: var(--neutral);
-    color: var(--foreground);
-    padding: 0.375rem 0.75rem;
-    border-radius: var(--radius, 0.5rem);
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s;
+  margin-right: 0.75rem;
+  border: 1px solid var(--border);
+  background-color: var(--neutral);
+  color: var(--foreground);
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-lg, 0.5rem);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
 }
 
 .form-file::file-selector-button:hover {
-    background-color: var(--neutral-hover);
-    border-color: color-mix(in srgb, var(--border) 90%, black);
-}
-
-.form-file:focus-visible {
-    outline: none;
+  background-color: var(--neutral-hover);
 }
 
 .form-file:focus-visible::file-selector-button {
-    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--primary);
+  outline: none;
+  box-shadow:
+    0 0 0 1px var(--background),
+    0 0 0 3px var(--primary);
 }
 
 /* Range Input */
 .form-range {
-    width: 100%;
-    height: 0.375rem;
-    background-color: var(--neutral);
-    border-radius: var(--radius, 0.5rem);
-    outline: none;
-    cursor: pointer;
-    appearance: none;
-    transition: background-color 0.2s;
+  width: 100%;
+  height: 0.375rem;
+  background-color: var(--neutral);
+  border-radius: var(--radius-full, 9999px);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  transition: background-color 0.15s;
 }
 
 .form-range::-webkit-slider-thumb {
-    appearance: none;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 9999px;
-    background-color: var(--primary);
-    border: 2px solid var(--background);
-    box-shadow: 0 1px 3px rgb(0 0 0 / 15%);
-    transition: background-color 0.2s, transform 0.1s;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--radius-full, 9999px);
+  background-color: var(--primary);
+  border: 2px solid var(--card);
+  box-shadow: var(--shadow-xs);
+  transition:
+    background-color 0.15s,
+    transform 0.1s;
 }
 
 .form-range::-webkit-slider-thumb:hover {
-    background-color: var(--primary-hover);
-    transform: scale(1.1);
+  background-color: var(--primary-hover);
+  transform: scale(1.1);
 }
 
 .form-range:focus-visible::-webkit-slider-thumb {
-    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--primary);
+  box-shadow:
+    0 0 0 1px var(--background),
+    0 0 0 3px var(--primary);
 }
 
-/* Checkbox & Radio wrappers */
+/* Checkbox & Radio */
 .form-checkbox-wrapper,
 .form-radio-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .form-checkbox,
 .form-radio {
-    appearance: none;
-    position: relative;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 0.25rem;
-    border: 1px solid var(--border);
-    background-color: var(--background);
-    cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  appearance: none;
+  position: relative;
+  height: 1rem;
+  width: 1rem;
+  border-radius: var(--radius-sm, 0.25rem);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    background-color 0.15s;
 }
 
 .form-radio {
-    border-radius: 9999px;
+  border-radius: var(--radius-full, 9999px);
 }
 
 .form-checkbox:checked,
 .form-radio:checked {
-    background-color: var(--primary);
-    border-color: var(--primary);
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .form-checkbox:checked::after {
-    content: "";
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    width: 0.2rem;
-    height: 0.4rem;
-    border-bottom: 2px solid var(--primary-foreground);
-    border-right: 2px solid var(--primary-foreground);
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 0.2rem;
+  height: 0.4rem;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
 }
 
 .form-radio:checked::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0.375rem;
-    height: 0.375rem;
-    border-radius: 9999px;
-    background-color: var(--primary-foreground);
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: var(--radius-full, 9999px);
+  background-color: #fff;
 }
 
 .form-checkbox:focus-visible,
 .form-radio:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--primary);
+  outline: none;
+  box-shadow:
+    0 0 0 1px var(--background),
+    0 0 0 3px var(--primary);
 }
 
 .form-helper {
-    font-size: 0.75rem;
-    color: var(--neutral-foreground);
+  font-size: 0.6875rem;
+  color: var(--neutral-foreground);
+  line-height: 1.4;
 }
 
 .form-error {
-    font-size: 0.75rem;
-    color: var(--danger);
-    font-weight: 500;
+  font-size: 0.6875rem;
+  color: var(--danger);
+  font-weight: 500;
+  line-height: 1.4;
 }
+
